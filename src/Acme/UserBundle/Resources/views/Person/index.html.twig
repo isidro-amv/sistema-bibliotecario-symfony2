@@ -1,0 +1,64 @@
+<table {#class="records_list"#} id="example" class="display">
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido_paterno</th>
+            <th>Apellido_materno</th>
+            <th>Fecha_nacimiento</th>
+            <th>Ocupacion</th>
+            <th>Escuela</th>
+            <th>Periodo_escolar</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Clave</th>
+            <th>Foto</th>
+            <th>Comentario</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('person_show', { 'id': entity.id }) }}">Mostrar</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('person_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                    <li>
+                       <form action="{{ path('person_delete')}}" method="post" class="confirm">
+                            <input type="hidden" name="id" value="{{entity.id}}">
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </li>
+                </ul>
+            </td>
+            <td><a href="{{ path('person_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.nombre }}</td>
+            <td>{{ entity.apellidopaterno }}</td>
+            <td>{{ entity.apellidomaterno }}</td>
+            <td>{% if entity.fechanacimiento %}{{ entity.fechanacimiento|date('Y-m-d') }}{% endif %}</td>
+            <td>{{ entity.ocupacion }}</td>
+            <td>{{ entity.escuela }}</td>
+            <td>{{ entity.periodoescolar }}</td>
+            <td>{{ entity.email }}</td>
+            <td>{{ entity.status }}</td>
+            <td>{{ entity.clave }}</td>
+            <td>{{ entity.foto }}</td>
+            <td>{{ entity.comentario }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{#
+<ul>
+    <li>
+        <a href="{{ path('person_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+#}

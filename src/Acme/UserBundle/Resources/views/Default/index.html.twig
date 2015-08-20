@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>Biblioteca Los Mangos - Puerto Vallarta</title>
+	</head>
+	<body>
+		<h1>Bienvenido <span style="color:#EB2323">{{app.user.username | default('Desconocido')}}</span>Página principal de Los mangos</h1>
+		<ul>
+			<li><a href="{{path('AcmeUserBundle_admin')}}">Panel de Administración</a></li>
+			<li><a href="{{path('_welcome')}}login">Iniciar  Sesión</a></li><!-- Tambien se puede utilizar app.request.requesturi para obtener la ruta del principal-->
+			<li><a href="{{path('_welcome')}}logout">Cerrar Sesión</a></li>
+		</ul>
+	</body>
+</html>

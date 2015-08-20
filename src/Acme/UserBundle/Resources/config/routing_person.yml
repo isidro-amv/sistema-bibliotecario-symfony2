@@ -1,0 +1,27 @@
+person:
+    pattern: /
+    defaults: {_controller: AcmeUserBundle:Person:index }
+
+person_update:
+    pattern: /{id}/update
+    defaults: {_controller: AcmeUserBundle:Person:update }
+
+person_show:
+    pattern: /{id}/show
+    defaults: {_controller: AcmeUserBundle:Person:show }
+
+person_edit:
+    pattern: /{id}/edit
+    defaults: {_controller: AcmeUserBundle:Person:edit }
+
+person_new:
+    pattern: /new
+    defaults: {_controller: AcmeUserBundle:Person:new }
+
+person_create:
+    pattern: /create
+    defaults: {_controller: AcmeUserBundle:Person:create}
+
+person_delete:
+    pattern: /delete
+    defaults: {_controller: AcmeUserBundle:Person:delete }

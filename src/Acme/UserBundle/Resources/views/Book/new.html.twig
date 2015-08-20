@@ -1,0 +1,16 @@
+<h1>Book creation</h1>
+
+<form action="{{ path('admin_book_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Crear</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_book') }}">
+            Regresar a la lista
+        </a>
+    </li>
+</ul>

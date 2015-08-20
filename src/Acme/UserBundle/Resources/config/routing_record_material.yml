@@ -1,0 +1,27 @@
+recordmaterial:
+    pattern: /
+    defaults: {_controller: AcmeUserBundle:RecordMaterial:index }
+
+recordmaterial_update:
+    pattern: /{id}/update
+    defaults: {_controller: AcmeUserBundle:RecordMaterial:update }
+
+recordmaterial_show:
+    pattern: /{id}/show
+    defaults: {_controller: AcmeUserBundle:RecordMaterial:show }
+
+recordmaterial_edit:
+    pattern: /{id}/edit
+    defaults: {_controller: AcmeUserBundle:RecordMaterial:edit }
+
+recordmaterial_new:
+    pattern: /new
+    defaults: {_controller: AcmeUserBundle:RecordMaterial:new }
+
+recordmaterial_create:
+    pattern: /create
+    defaults: {_controller: AcmeUserBundle:RecordMaterial:create}
+
+recordmaterial_delete:
+    pattern: /{id}/delete
+    defaults: {_controller: AcmeUserBundle:RecordMaterial:delete }

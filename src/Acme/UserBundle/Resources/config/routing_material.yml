@@ -1,0 +1,27 @@
+material:
+    pattern: /
+    defaults: {_controller: AcmeUserBundle:Material:index }
+
+material_update:
+    pattern: /{id}/update
+    defaults: {_controller: AcmeUserBundle:Material:update }
+
+material_show:
+    pattern: /{id}/show
+    defaults: {_controller: AcmeUserBundle:Material:show }
+
+material_edit:
+    pattern: /{id}/edit
+    defaults: {_controller: AcmeUserBundle:Material:edit }
+
+material_new:
+    pattern: /new
+    defaults: {_controller: AcmeUserBundle:Material:new }
+
+material_create:
+    pattern: /create
+    defaults: {_controller: AcmeUserBundle:Material:create}
+
+material_delete:
+    pattern: /delete
+    defaults: {_controller: AcmeUserBundle:Material:delete }

@@ -1,0 +1,27 @@
+admin_book:
+    pattern: /
+    defaults: {_controller: AcmeUserBundle:Book:index }
+
+admin_book_update:
+    pattern: /{id}/update
+    defaults: {_controller: AcmeUserBundle:Book:update }
+
+admin_book_show:
+    pattern: /{id}/show
+    defaults: {_controller: AcmeUserBundle:Book:show }
+
+admin_book_edit:
+    pattern: /{id}/edit
+    defaults: {_controller: AcmeUserBundle:Book:edit }
+
+admin_book_new:
+    pattern: /new
+    defaults: {_controller: AcmeUserBundle:Book:new }
+
+admin_book_create:
+    pattern: /create
+    defaults: {_controller: AcmeUserBundle:Book:create}
+
+admin_book_delete:
+    pattern: /delete
+    defaults: {_controller: AcmeUserBundle:Book:delete }

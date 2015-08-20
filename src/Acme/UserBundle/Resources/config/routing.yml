@@ -1,0 +1,109 @@
+AcmeUserBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AcmeUserBundle:Default:hola }
+
+AcmeUserBundle_testHola:
+    pattern: /test
+    defaults: {_controller: AcmeUserBundle:Default:test }
+
+AcmeUserBundle_admin:
+    pattern: /
+    defaults: {_controller: AcmeUserBundle:Default:index }
+
+AcmeUserBundle_admin:
+    pattern: /admin/
+    defaults: {_controller: AcmeUserBundle:Catalago:index }
+
+AcmeUserBundle_catalago:
+    pattern: /admin/catalago/
+    defaults: {_controller: AcmeUserBundle:Catalago:index }
+
+AcmeUserBundle_usuarios:
+    pattern: /admin/usuarios/
+    defaults: {_controller: AcmeUserBundle:Usuarios:index }
+
+AcmeUserBundle_new_user:
+    pattern: /admin/usuarios/nuevo
+    defaults: {_controller: AcmeUserBundle:Usuarios:nuevoUsuario }
+
+AcmeUserBundle_circulacion:
+    pattern: /admin/circulacion/
+    defaults: {_controller: AcmeUserBundle:Circulacion:index }
+
+AcmeUserBundle_reportes:
+    pattern: /admin/reportes/
+    defaults: {_controller: AcmeUserBundle:Admin:reportes }
+
+AcmeUserBundle_findBook:
+    pattern: /admin/find-book/
+    defaults: {_controller: AcmeUserBundle:Catalago:findBook }
+
+AcmeUserBundle_findMaterial:
+    pattern: /admin/find-material/
+    defaults: {_controller: AcmeUserBundle:Catalago:findMaterial }
+
+AcmeUserBundle_findPerson:
+    pattern: /admin/find-person/
+    defaults: {_controller: AcmeUserBundle:Usuarios:findPerson }
+
+AcmeUserBundle_findRecord:
+    pattern: /admin/find-record/
+    defaults: {_controller: AcmeUserBundle:circulacion:findRecord }
+
+AcmeUserBundle_findAdmin:
+    pattern: /admin/find-admin/
+    defaults: {_controller: AcmeUserBundle:Usuarios:findAdmin }
+
+AcmeUserBundle_book:
+    resource: "@AcmeUserBundle/Resources/config/routing_book.yml"
+    prefix: /admin/book/
+
+AcmeUserBundle_author:
+    resource: "@AcmeUserBundle/Resources/config/routing_author.yml"
+    prefix: /admin/author/
+
+AcmeUserBundle_person:
+    resource: "@AcmeUserBundle/Resources/config/routing_person.yml"
+    prefix: /admin/person/
+
+AcmeUserBundle_user:
+    resource: "@AcmeUserBundle/Resources/config/routing_user.yml"
+    prefix: /admin/user/
+
+AcmeUserBundle_record:
+    resource: "@AcmeUserBundle/Resources/config/routing_record.yml"
+    prefix: /admin/record/
+
+AcmeUserBundle_material:
+    resource: "@AcmeUserBundle/Resources/config/routing_material.yml"
+    prefix: /admin/material/
+
+AcmeUserBundle_materialRecord:
+    resource: "@AcmeUserBundle/Resources/config/routing_record_material.yml"
+    prefix: /admin/record_material/
+
+
+
+
+# AcmeUserBundle_saveBooks:
+#     pattern: /admin/
+#     defaults: {_controller: AcmeUserBundle:Admin:ManagerBooks }
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile

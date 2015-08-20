@@ -1,0 +1,241 @@
+{% extends 'AcmeUserBundle:Admin:sections.html.twig' %}
+{% block section %}
+    {# {% include 'AcmeUserBundle:Book:new.html.twig' %} #}
+    <div id="search_catalogo" class="content_section">
+        <div class="success">{{msg_success}}</div>
+        <div class="errors">{{msg_error}}</div>
+        <h3><span >Libros</span> </h3>
+       
+            <!-- recibe los parametros de buscarAction() de recursoscontroller -->
+            <form action="{{ path('AcmeUserBundle_findBook')}}" name="formBook" method="post" class="formBusquedaRapida">
+                <b>Búsqueda simple</b>
+                {{ form_widget(formBook)}}
+                <input type="submit"  value="Buscar"  />
+            </form><br><br>
+            
+            <a href="#" id="btnBusquedaAvanzada" onClick='switchDisplay("simple_search_book")' alt="avalzada" >
+             <b>Búsqueda avanzada</b>
+             <img src="{{asset('bundles/acmeuser/img/btn_avanzado.png')}}">
+            </a><br>
+            <form action="{{ path('AcmeUserBundle_findBook')}}" method="post" id="simple_search_book" 
+                class="formBusquedaRapida" style="display:none;" novalidate="novalidate">
+                {{ form_widget(formBookSimple)}}
+                <input type="submit" value="Buscar"  />
+            </form>
+        
+        <br><hr><br>
+        <h3><span>Materiales</span> </h3>
+       
+            <form action="{{ path('AcmeUserBundle_findMaterial')}}" method="post" id="quick_search_material" 
+                class="formBusquedaRapida" >
+                <b>Búsqueda simple</b><br>
+                {{ form_widget(formMaterial) }}
+                <input type="submit" value="Buscar" />
+            </form><br>
+            <br>
+            
+            <a href="#" id="btnBusquedaAvanzada" onClick='switchDisplay("simple_search_material")' alt="avalzada">
+                <b>Búsqueda avanzada</b>
+                <img src="{{asset('bundles/acmeuser/img/btn_avanzado.png')}}">
+            </a><br>
+            <form action="{{ path('AcmeUserBundle_findMaterial')}}" method="post" id="simple_search_material" 
+                class="formBusquedaRapida" style="display:none;" novalidate="novalidate">
+                {{ form_widget(formMaterialSimple)}}
+                <input type="submit" value="Buscar"  />
+            </form>
+        
+    </div>
+    
+    <div id="new_book" style="display:none;" class="content_section">
+        <h3><span >Agregar libro</span> </h3>
+       
+            <form action="{{ path('AcmeUserBundle_catalago')}}" method="post" id="form_new_book"class="formBusquedaRapida" novalidate="novalidate">
+                <b>Agregar libro</b><br>
+                {# ------------  AGREGA ATRIBUTOS A UN CAMPO DEL FORMULARIO ----------------------- 
+                {{ form_widget(formNewBook.author, { 'attr': {'style': 'display:none'} })}}#}
+                
+                <div class="formBusquedaRapida" id="new-autor-1">
+                    <label>Autor: </label></br>
+                    <label>Nombre: </label>{{ form_widget(formNewBook.autor_nombre_1) }}</br>
+                    <label>Apellido paterno: </label>{{ form_widget(formNewBook.autor_ap_1) }}</br>
+                    <label>Apellido materno: </label>{{ form_widget(formNewBook.autor_am_1) }}</br>
+                    <label>País: </label>{{ form_widget(formNewBook.autor_pais_1) }}</br>
+                    <button type="button" onClick='$("#new-autor-2").slideDown("fast")'>Nuevo Autor</button>
+                </div>
+                <div class="formBusquedaRapida" id="new-autor-2" style="display:none">
+                    <label>Autor: </label></br>
+                    <label>Nombre: </label>{{ form_widget(formNewBook.autor_nombre_2) }}</br>
+                    <label>Apellido paterno: </label>{{ form_widget(formNewBook.autor_ap_2) }}</br>
+                    <label>Apellido materno: </label>{{ form_widget(formNewBook.autor_am_2) }}</br>
+                    <label>País: </label>{{ form_widget(formNewBook.autor_pais_2) }}</br>
+                    <button type="button" onClick='$("#new-autor-3").slideDown("fast")'>Nuevo Autor</button>
+                </div>
+                <div class="formBusquedaRapida" id="new-autor-3" style="display:none">
+                    <label>Autor: </label></br>
+                    <label>Nombre: </label>{{ form_widget(formNewBook.autor_nombre_3) }}</br>
+                    <label>Apellido paterno: </label>{{ form_widget(formNewBook.autor_ap_3) }}</br>
+                    <label>Apellido materno: </label>{{ form_widget(formNewBook.autor_am_3) }}</br>
+                    <label>País: </label>{{ form_widget(formNewBook.autor_pais_3) }}</br>
+                </div>
+                
+                {# ------------  IMPRIME EL FORMULARIO IGNARANDO EL CAMPO YA REDERIZADO ----------- #}
+                {{ form_widget(formNewBook)}}
+
+                <input type="submit">
+            </form><br><br>
+             {#{{ form_widget(formNewBook.author, { 'attr': {'class': 'some'} })}}#}
+        
+    </div>
+
+    <div id="new_material" style="display:none;" class="content_section">
+        <h3><span >Agregar material</span> </h3>
+       
+            <form action="{{ path('AcmeUserBundle_catalago')}}" method="post" id="form_new_material" 
+                class="formBusquedaRapida" novalidate="novalidate">
+                <b>Agregar material</b>
+                {{ form_widget(formNewMaterial)}}
+                <input type="submit">
+            </form><br><br>
+        
+    </div>
+    {#
+    <div id="author_new" title="Nuevo Autor" style="display:none;">
+        <form action="{{ path('AcmeUserBundle_catalago')}}" id="author_new_form" novalidate="novalidate">
+            <b>Agregar material</b><br>
+            {{ form_widget(formNewAuthor.book, { 'attr': {'style': 'display:none'} })}}
+            {{ form_widget(formNewAuthor)}}<br>
+        </form>
+    </div>
+    #}
+    {#
+    <div id="author_select" style="display:none;" title="Selecciona un autor">
+        <select multiple id="select_authors">
+            {% for author in authors %}
+                <option value={{author.id}}>{{author.nombre}} {{author.apellidopaterno}} {{author.apellidomaterno}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    #}
+{% endblock %}
+{% block asidedown %}
+    <div class="divAsideDown" id="divAsideDown">
+        <div class="divAsideAgregarElemento">
+            Agregar libro:
+            <button id="btnNuevoLibro" name="btnNuevoLibro" 
+                onClick='switchDisplayNew("new_book")'>Nuevo
+            </button>
+        </div>
+        <div class="divAsideAgregarElemento">
+            Agregar material:
+            <button id="btnNuevoMaterial" name="btnNuevoMaterial" 
+                onClick='switchDisplayNew("new_material")'>Nuevo
+            </button>
+        </div>
+    </div>
+    <div class="divAsideDown" id="divAsideCancel" style="display:none;">
+    <div class="divAsideAgregarElemento">
+        <button id="btnCancelar" name="btnCancelar" 
+            onClick='switchDisplayNew("search_catalogo");cleanFormAddBook("form_new_book")'>Cancelar
+        </button>
+    </div>
+</div>
+{% endblock %}
+{% block morescripts %}
+<script>
+    function mostrar(el) {
+        $(el).slideDown('fast');
+    }
+
+
+    $("#authors_list").html('');
+    //$(".input_authors").hide();
+    //$('#acme_userbundle_booktype_author').appendTo('#author_select');
+    function displayPopUpNew(id) {
+        var htmlAutorList;
+        var htmlAutorSelect;
+        $("#"+id).dialog( "open" );
+        $("#"+id).dialog({
+            height: 270,
+            width: 420,
+            modal: true,
+            resizable: false,
+            buttons: {
+                 "Crear": function() {
+                    //console.log($("#"+id).find('form').serialize()+"-test");
+                    //alert("{{ path('AcmeUserBundle_catalago')}}");
+                   $.ajax({
+                      type: "POST",
+                      url: "{{ path('AcmeUserBundle_catalago')}}",
+                      data: $("#"+id).find('form').serialize(),
+                      success: function(data){
+                        if(data == 'false'){
+                            alert('Ya existe un autor con el mismo nombre en la base de datos');
+                        }else{
+                            $("#"+id).dialog( "close" );
+                            htmlAutorSelect = '<input type="checkbox" id="acme_userbundle_booktype_author_'+data+'" \
+                                name="acme_userbundle_booktype[author]['+data+']" value="'+data+'">';
+                            $("#acme_userbundle_booktype_author").append(htmlAutorSelect);
+                            $("#acme_userbundle_booktype_author_"+data).attr("checked", true);
+                            ///////// SERIALIZA UN FORMULARIO EN UN ARRAY
+                            var fields = $("#"+id).find('form').serializeArray();
+                            htmlAutorList ="<li>";
+                            jQuery.each(fields, function(i, field){
+                                /// IGNORA EL INPUT TOKEN
+                                if(i!=0){
+                                    htmlAutorList += field.value + " ";
+                                }
+                            });
+                            htmlAutorList += "</li>";
+                            $("#authors_list").append(htmlAutorList);
+                            //////////////////////////////////////////
+
+
+                        }
+                       }
+                      //dataType: dataType
+                    });
+                 },
+                 Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            },
+        });
+    }
+    function displayPopUpSelect (id) {
+        var authorsSelect="";
+        var isSelected = false;
+        $("#"+id).dialog( "open" );
+        $("#select_authors").css('height',250);
+        $( "#"+id ).dialog({
+          height: 400,
+          modal: true,
+          buttons: {
+                 "Agregar": function() {
+                    $('#author_select option:selected').each(function(index, value) {
+                        $("#acme_userbundle_booktype_author_"+$(value).val()).attr("checked", true);
+                        $("#authors_list").append('<li>'+$(value).text()+'</li>');
+                        isSelected = true;
+                    });
+                    if (isSelected) {$( this ).dialog( "close" )};
+                 },
+                 Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+    }
+
+    function cleanFormAddBook(id) {
+        $('#'+id).each (function(){
+            this.reset();
+        });
+        $("#authors_list").html('');
+    }
+
+    function switchDisplayNew (id) {
+        $('.content_section').hide('fast');
+        $('#'+id).show('fast');
+        $('#divAsideCancel, #divAsideDown').toggle();
+    }
+</script>
+{% endblock %}

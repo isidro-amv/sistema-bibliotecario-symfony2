@@ -1,0 +1,56 @@
+<h1>RecordMaterial list</h1>
+
+<table class="records_list display" id="example">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Id Acervo</th>
+            <th>Id Usuario</th>
+            <th>Dia_sacado</th>
+            <th>Entregó</th>
+            <th>Dia_regreso</th>
+            <th>Dia_regresado</th>
+            <th>Recibió</th>
+            {#<th>Comentario</th>#}
+            <th>Recibido</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('recordmaterial_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td> {{ entity.materialid.nombre }}</td>
+            <td> {{ entity.personid }}</td>
+            <td>{% if entity.diasacado %}{{ entity.diasacado|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td> {{ entity.adminentrega }}</td>
+            <td>{% if entity.diaregreso %}{{ entity.diaregreso|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.diaregresado %}{{ entity.diaregresado|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td> {{ entity.adminrecibe }}</td>
+            {#<td>{{ entity.comentario }}</td>#}
+            <td> {% if entity.recibido == 1  %} SÍ {% else %} NO {% endif %}</td>
+            
+            {#
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('recordmaterial_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('recordmaterial_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+            #}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{#
+<ul>
+    <li>
+        <a href="{{ path('recordmaterial_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+#}

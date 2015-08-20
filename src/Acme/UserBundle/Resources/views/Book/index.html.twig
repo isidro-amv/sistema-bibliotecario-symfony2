@@ -1,0 +1,92 @@
+<h1>Book list</h1>
+
+<table {#class="records_list"#} id="example" class="display">
+    <thead>
+        <tr>
+            <th>Actions</th>
+            <th>Id</th>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Cantidad</th>
+            <th>Clasificacion</th>
+            <th>Precio</th>
+            <th>Signatura_topografica</th>
+            <th>Tema</th>
+            <th>Editorial</th>
+            <th>Lugar_publicacion</th>
+            <th>Fecha_edicion</th>
+            <th>Idioma</th>
+            <th>Tamano</th>
+            <th>Descrip_fisica</th>
+            <th>Formato</th>
+            <th>Notas</th>
+            <th>Isbn</th>
+            <th>Volumen</th>
+            <th>Edicion</th>
+            <th>Paginas</th>
+            <th>Status_record</th>
+            <th>Estado_fisico</th>
+            <th>Hists</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_book_show',  { 'id': entity.id }) }}">Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_book_edit',  { 'id': entity.id }) }}">editar</a>
+                    </li>
+                    <li>
+                       <form action="{{ path('admin_book_delete')}}" method="post" class="confirm">
+                            <input type="hidden" name="id" value="{{entity.id}}">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </li>
+                </ul>
+            </td>
+            <td><a href="{{ path('admin_book_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.titulo }}</td>
+            <td>
+                <select>
+                    {% for key,a in entity.author %}
+                        <option value="{{key}}">{{a}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>{{ entity.cantidad }}</td>
+            <td>{{ entity.clasificacion }}</td>
+            <td>{{ entity.precio }}</td>
+            <td>{{ entity.signaturatopografica }}</td>
+            <td>{{ entity.tema }}</td>
+            <td>{{ entity.editorial }}</td>
+            <td>{{ entity.lugarpublicacion }}</td>
+            <td>{% if entity.fechaedicion %}{{ entity.fechaedicion|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.idioma }}</td>
+            <td>{{ entity.tamano }}</td>
+            <td>{{ entity.descripfisica }}</td>
+            <td>{{ entity.formato }}</td>
+            <td>{{ entity.notas }}</td>
+            <td>{{ entity.isbn }}</td>
+            <td>{{ entity.volumen }}</td>
+            <td>{{ entity.edicion }}</td>
+            <td>{{ entity.paginas }}</td>
+            <td>{{ entity.statusrecord }}</td>
+            <td>{{ entity.estadofisico }}</td>
+            <td>{{ entity.hits }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{#
+<ul>
+    <li>
+        <a href="{{ path('admin_book_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+#}

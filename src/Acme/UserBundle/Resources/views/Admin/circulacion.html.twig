@@ -1,0 +1,93 @@
+{% extends 'AcmeUserBundle:Admin:sections.html.twig' %}
+{% block section %}
+
+<div id="new_record" class="content_section">
+	 <h3><span>libros</span> </h3>
+	 <div class="success">{{suucces_form_record_libros}}</div>
+	 <div class="errors">{{error_form_record_libros}}</div>
+	 <div >
+ 		<button onClick="animationFormES('form-salida')" >Salida</button  >
+ 		<button onClick="animationFormES('form-entrada')">Entrada</button>
+	 </div>
+	 <div id="form_entrada_salida" >
+		 <form action="{{ path('AcmeUserBundle_circulacion')}}" method="post" id="form-salida"  
+		 	class="formBusquedaRapida" style="display:none">
+		 	{{ form_widget(form_record_salida)}}
+		 	<input type="submit" value="prestar">
+		 </form>
+
+		 <form action="{{ path('AcmeUserBundle_circulacion')}}" method="post" id="form-entrada"  
+		 	class="formBusquedaRapida" style="display:none">
+		 	{{ form_widget(form_record_entrada)}}
+		 	<input type="submit" value="Recibir">
+		 </form>
+	 </div>
+
+	 <br><hr><br>
+	 <h3><span>Materiales</span> </h3>
+	 <div class="success">{{suucces_form_record_material}}</div>
+	 <div class="errors">{{error_form_record_material}}</div>
+	 <div >
+ 		<button onClick="animationFormES('form-m-salida')" >Salida</button  >
+ 		<button onClick="animationFormES('form-m-entrada')">Entrada</button>
+	 </div>
+	 <div id="form_entrada_salida" >
+		 <form action="{{ path('AcmeUserBundle_circulacion')}}" method="post" id="form-m-salida"  
+		 	class="formBusquedaRapida" style="display:none">
+		 	{{ form_widget(form_recordMaterial_salida)}}
+		 	<input type="submit" value="prestar">
+		 </form>
+
+		 <form action="{{ path('AcmeUserBundle_circulacion')}}" method="post" id="form-m-entrada"  
+		 	class="formBusquedaRapida" style="display:none">
+		 	{{ form_widget(form_recordMaterial_entrada)}}
+		 	<input type="submit" value="Recibir">
+		 </form>
+	 </div>
+</div>
+<div id="show_record" style="display:none;" class="content_section">
+	<form action="{{ path('AcmeUserBundle_findRecord')}}" class="formBusquedaRapida" method="post">
+		<label>Tipo:</label>
+		<select name="type">
+			<option value="li">Libro</option>
+			<option value="ma">Material</option>
+		</select><br>
+		<label>ID Acervo</label>
+		<input type="number" name="id-a"><br>
+		<label>ID Usuario</label>
+		<input type="number" name="id-u"><br>
+		<label>Fecha Inicio</label>
+		<input type="date" name="date-ini"><br>
+		<label>Fecha Fin</label>
+		<input type="date" name="date-fin"><br>
+		<input type="submit">
+	</form>
+</div>
+
+{% endblock %}
+{% block asidedown %}
+<div class="divAsideDown" id="divAsideDown">
+    <div class="divAsideAgregarElemento">
+        Historial:
+        <button id="btnNuevoLibro" name="btnNuevoLibro" 
+            onClick='switchDisplayNew("show_record")'>Buscar
+        </button>
+    </div>
+</div>
+<div class="divAsideDown" style="display:none;">
+	<div class="divAsideAgregarElemento">
+	    Cancelar:
+	    <button id="btnCancelar" name="btnCancelar" 
+	        onClick='switchDisplayNew("new_record");'>Cancelar
+	    </button>
+	</div>
+<div>
+{% endblock %}
+{% block morescripts %}
+<script>
+	function animationFormES(el) {
+		$("#form_entrada_salida form").hide();
+		$('#'+el).slideDown('fast');
+	}
+</script>
+{% endblock %}

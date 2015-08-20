@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Biblioteca los Mangos{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/acmeuser/css/estilos-contenido.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/acmeuser/css/menu/menu_style.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/acmeuser/css/custom-theme/jquery-ui-1.7.3.custom.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/acmeuser/css/dataTables/demo_page.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/acmeuser/css/dataTables/demo_table.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/acmeuser/css/dataTables/demo_table_jui.css')}}">
+        {% endblock %}
+        {% block morestyles %}
+        {% endblock %}
+        <link rel="shortcut icon" href="{{ ('favicon.ico') }}" />
+    </head>
+    <body>
+        <header>
+            <!--Contenido de la cabecera-->
+            <img src="{{asset('bundles/acmeuser/img/logo.png')}}" align="left" height="100%" id="logo" />
+            <img src="{{asset('bundles/acmeuser/img/sistema-de-administracion.png')}}" align="right" height="65px" width="442px"><br>
+            <h1><span style="padding-left: 1em;">Biblioteca Los Mangos</span></h1>
+            <h5 align="left"><span style="padding-left: 2.5em;">Centro Cultural</span></h5>
+        </header>
+        <nav>
+            {% block nav %}
+            {% endblock %}
+        </nav>
+        <section id="sectionContenedor">
+            {% block content %}
+            {% endblock %}
+        </section>
+        
+        <!-- actualmente usado para los resultados debe eliminarse!-->
+        {% block result %}
+        {% endblock %}
+
+        <footer>
+            <br>
+            <span style="padding-left: 10em; word-spacing: 2em;">
+                <a href='#'>Ayuda</a>
+                <a href='#' style="word-spacing: 0em;">Condiciones de uso</a>
+                <a href="{{asset('desarrolladores')}}">Desarrolladores</a>
+            </span>
+            <img src="{{asset('bundles/acmeuser/img/logo_remic.png')}}" align='right' id='logo_down'>
+            <!--Contenido del pie de página-->
+        </footer>
+        {% block javascripts %}
+            
+            <script type="text/javascript" src="{{asset('bundles/acmeuser/js/jquery.min.js')}}"></script>
+            <script type="text/javascript" src="{{asset('bundles/acmeuser/js/jquery-ui.js')}}"></script>
+            <script type="text/javascript" src="{{asset('bundles/acmeuser/js/jquery.dataTables.min.js')}}"></script>
+            <!--<script type="text/javascript" src="{{asset('bundles/acmeuser/js/datepicker-es.js')}}"></script>-->
+            <!--<script type="text/javascript" src="{{asset('bundles/acmeuser/js/jquery.form.js')}}"></script>-->
+            <script type="text/javascript" src="{{asset('bundles/acmeuser/js/main.js')}}"></script>
+            <script type="text/javascript" >
+                $(document).ready(function () {
+                    $('.confirm').submit(function (evt) {
+                        var res =confirm("¿Seguro que deseas eliminar?");
+                        if (!res) {
+                            evt.preventDefault();
+                        }
+                    });
+                });
+                $(function() {
+                    $( ".datepicker" ).datepicker(
+                        { changeYear: true ,
+                        dateFormat: 'yy-mm-dd'}
+                    );
+                    $('#example').dataTable({
+                        "sPaginationType": "full_numbers",
+                    });
+
+                    
+                  });
+            </script>
+        {% endblock %}
+        {% block morescripts %}
+        {% endblock %}
+
+    </body>
+</html>

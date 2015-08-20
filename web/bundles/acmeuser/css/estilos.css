@@ -1,0 +1,90 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+	margin: 0;
+}
+
+body,html{
+	color:#000;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size: 1em;
+	height: 100%;
+	margin:0;
+	padding:0;
+	border:0;
+	
+}
+
+a{
+	text-decoration:none;
+	color: #333;
+}
+
+header, footer{
+	background: rgb(255,255,255);
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjI5JSIgc3RvcC1jb2xvcj0iI2VkZWRlZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU3JSIgc3RvcC1jb2xvcj0iI2NjY2RjZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjgyJSIgc3RvcC1jb2xvcj0iI2E5YWFhYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk1JSIgc3RvcC1jb2xvcj0iIzgyODI4MiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3YTdhN2EiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(237,237,237,1) 29%, rgba(204,205,206,1) 57%, rgba(169,170,170,1) 82%, rgba(130,130,130,1) 95%, rgba(122,122,122,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(29%,rgba(237,237,237,1)), color-stop(57%,rgba(204,205,206,1)), color-stop(82%,rgba(169,170,170,1)), color-stop(95%,rgba(130,130,130,1)), color-stop(100%,rgba(122,122,122,1)));
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 29%,rgba(204,205,206,1) 57%,rgba(169,170,170,1) 82%,rgba(130,130,130,1) 95%,rgba(122,122,122,1) 100%);
+	background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 29%,rgba(204,205,206,1) 57%,rgba(169,170,170,1) 82%,rgba(130,130,130,1) 95%,rgba(122,122,122,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 29%,rgba(204,205,206,1) 57%,rgba(169,170,170,1) 82%,rgba(130,130,130,1) 95%,rgba(122,122,122,1) 100%);
+	background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 29%,rgba(204,205,206,1) 57%,rgba(169,170,170,1) 82%,rgba(130,130,130,1) 95%,rgba(122,122,122,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#7a7a7a',GradientType=0 );
+	margin:0 auto;
+	width: 1150px;	
+}
+
+header{
+	height:110px;
+	
+}
+
+.login{
+	margin:0 auto;
+	max-width: 1150px;
+	height:536px;
+	width:100%;
+	
+	background:url(../img/fondo-login.png) no-repeat center;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#ingresar{
+	background-image: linear-gradient(bottom, rgb(23,23,23) 11%, rgb(150,147,150) 95%);
+	background-image: -o-linear-gradient(bottom, rgb(23,23,23) 11%, rgb(150,147,150) 95%);
+	background-image: -moz-linear-gradient(bottom, rgb(23,23,23) 11%, rgb(150,147,150) 95%);
+	background-image: -webkit-linear-gradient(bottom, rgb(23,23,23) 11%, rgb(150,147,150) 95%);
+	background-image: -ms-linear-gradient(bottom, rgb(23,23,23) 11%, rgb(150,147,150) 95%);
+	
+	color:#FFF;
+	width:300px;;
+	height: 250px;
+	text-align:center;
+	valing: middle;
+	margin-top:100px;
+	margin-left:430px;;
+	
+	-webkit-box-shadow: 15px 16px 23px rgba(26, 46, 50, 0.66);
+	-moz-box-shadow:    15px 16px 23px rgba(26, 46, 50, 0.66);
+	box-shadow:         15px 16px 23px rgba(26, 46, 50, 0.66);box-shadow: 0pt 0pt 5px 5px rgb(136, 136, 136);
+	
+	display:inline-block;
+
+}
+
+footer{
+	text-align:center;
+	height:53px;
+}
+
+#logo_down{
+	alignment-adjust:middle;
+	margin-top:-10px;
+	margin-right:10px;
+}
+
+

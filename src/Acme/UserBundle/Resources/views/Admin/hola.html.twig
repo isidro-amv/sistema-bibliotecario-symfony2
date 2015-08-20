@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+{% block nav %}
+   <div id="menucontainer">
+        <div id="menunav">
+            <div class="tabs">
+                <div id="menu0" class="botonTab0" onclick="location.href='{{path('AcmeUserBundle_admin')}}';" style="cursor:pointer;" >INICIO</div>
+                <div id="menu1" class="{{is_select_1 | default("botonTab")}}" onClick="location.href='{{path('AcmeUserBundle_catalago')}}'">CATÁLOGO</div>
+                <div id="menu2" class="{{is_select_2 | default("botonTab")}}" onClick="location.href='{{path('AcmeUserBundle_usuarios')}}';">USUARIOS</div>
+                <div id="menu3" class="{{is_select_3 | default("botonTab")}}" onClick="location.href='{{path('AcmeUserBundle_circulacion')}}';">CIRCULACIÓN</div>
+                <div id="menu4" class="{{is_select_4 | default("botonTab")}}" onClick="location.href='{{path('AcmeUserBundle_reportes')}}';">REPORTES</div>
+           </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+	we are admins sobre la pestaña {{pestana}}
+{% endblock %}
+{% block formPrincipal%}
+    holaa
+{% endblock %}
+

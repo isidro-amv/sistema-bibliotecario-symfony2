@@ -1,0 +1,53 @@
+{% extends 'AcmeUserBundle:Admin:sections.html.twig' %}
+{% block section %}
+<div id="new_user" class="content_section">
+ <h3><span>Agregar Usuario</span> </h3>
+        <form action="{{ path('AcmeUserBundle_new_user')}}" method="post" id="form_new_user" 
+            class="formBusquedaRapida">
+            <b>Agregar Usuario</b><br>
+            
+            {{  form_widget(formNewPerson._token) }}
+            <label>Nombre:</label>{{ form_widget(formNewPerson.nombre) }}<br>
+            <label>Apellido Paterno:</label>{{ form_widget(formNewPerson.apellido_paterno) }}<br>
+            <label>Apellido Materno:</label>{{ form_widget(formNewPerson.apellido_materno) }}<br>
+            <label>Fecha de nacimiento:</label>{{ form_widget(formNewPerson.fecha_nacimiento) }}
+            <label>Ocupación:</label>{{ form_widget(formNewPerson.ocupacion) }}<br>
+            <label>Escuela:</label>{{ form_widget(formNewPerson.escuela) }}<br>
+            <label>Periodo Escolar:</label>{{ form_widget(formNewPerson.periodo_escolar) }}<br>
+            <label>Email:</label>{{ form_widget(formNewPerson.email) }}<br>
+            <label>Estatus:</label>{{ form_widget(formNewPerson.status) }}<br>
+            <label>Clave:</label>{{ form_widget(formNewPerson.clave) }}<br>
+            
+            <div class="formBusquedaRapida" >
+                <label>Telefono 1</label>{{ form_widget(formNewPerson.telefono_1) }}<br>
+                <label>Telefono 2</label>{{ form_widget(formNewPerson.telefono_2) }}<br>
+                <label>Celular</label>{{ form_widget(formNewPerson.celular) }}
+            </div>
+
+            <div class="formBusquedaRapida">
+                <label>Municipio</label>{{ form_widget(formNewPerson.municipio) }}
+                <label>Dirección </label>{{ form_widget(formNewPerson.direccion) }}
+            </div>
+
+            <label>Comentario:</label>{{ form_widget(formNewPerson.comentario) }}<br>
+            
+            <input type="submit" value="Guardar"/>
+        </form>
+    {#
+    <div id="formNewPhone" style="display:none">
+        <form action="#" method="post" class="formBusquedaRapida">
+            <b>Agregar datos Telefónicos</b>
+            {{ form_widget(formNewPhone) }}
+        </form>
+    </div>
+    #}
+
+</div>
+{% endblock %}
+{% block asidedown %}
+{% endblock %}
+{% block morescripts %}
+<script>
+
+</script>
+{% endblock %}

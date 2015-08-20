@@ -1,0 +1,41 @@
+{% extends 'AcmeUserBundle:Admin:main.html.twig' %}
+{% block content %}
+<section id="sectionContenedor">
+    <section id="sectionPrincipal" class="sectionPrincipal">
+        {% block section %}
+        {% endblock %}
+    </section>
+    {% block aside %}
+        <aside>
+            <div class="divContenedorAside">
+                <!--Bienvenida Aside-->
+                <div class="divAsideBienvenida"><span><h3>Bienvenido</h3> <br><br>
+                    <h5>Ingres&oacute; como: {{ app.user.username | default("desconocido")}}!</h5>
+                </div>
+             
+                <div class="divAsideLogout">
+                    <div style="margin-top: 40%" >
+                        <a href="{{path('_welcome')}}logout">Cerrar Sesión</a></li>
+                    </div>
+                </div>
+            </div>
+            <br>
+            {% block asidedown %}
+            {% endblock %}    
+        </aside>
+    {% endblock %}
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+    $(function(){
+        $('.confirm').click(function (evt) {
+            var res =confirm("¿Seguro que deseas eliminar?");
+            if (!res) {
+                evt.preventDefault();
+            }
+        })
+    });
+    
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'AcmeUserBundle:Admin:sections.html.twig' %}
+{% block section %}
+<h1>Editar Persona</h1>
+
+<form action="{{ path('person_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}
+    <p>
+        <button type="submit">Editar</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <!--<a href="{{ path('person') }}">-->
+        <a href="javascript:window.history.back();">
+            Regresar a la lista
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('person_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Eliminar</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

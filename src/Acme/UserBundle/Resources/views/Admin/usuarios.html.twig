@@ -1,0 +1,249 @@
+{% extends 'AcmeUserBundle:Admin:sections.html.twig' %}
+{% block section %}
+    <div id="search_usuarios" class="content_section">
+        <div class="success">{{msg_success}}</div>
+        <div class="errors">{{msg_error}}</div>
+        <h3><span>Usuarios</span> </h3>
+            <!-- recibe los parametros de buscarAction() de recursoscontroller -->
+            <form action="{{ path('AcmeUserBundle_findPerson')}}" name="formPerson" method="post" class="formBusquedaRapida">
+                <b>Búsqueda Simple</b>
+                {{ form_widget(formPerson)}}
+                <input type="submit">
+            </form><br><br>
+            <b>Búsqueda Avanzada</b>
+            <a href="#" id="btnBusquedaAvanzada">
+                <img src="{{asset('bundles/acmeuser/img/btn_avanzado.png')}}" 
+                     onClick='switchDisplay("simple_search_person")' alt="avalzada" >
+            </a><br>
+            <form action="{{ path('AcmeUserBundle_findPerson')}}" method="post" id="simple_search_person" 
+                class="formBusquedaRapida" style="display:none;" novalidate="novalidate">
+                {{ form_widget(formPersonSimple)}}
+                <input type="submit" />
+            </form>
+        {% if is_granted("ROLE_ADMIN")%}
+            <br><hr><br>
+            <h3><span>Administradores</span> </h3>
+                <form action="{{ path('AcmeUserBundle_findAdmin')}}" method="post" id="quick_search_material" 
+                    class="formBusquedaRapida" >
+                    <b>Búsqueda Simple</b><br>
+                    {{ form_widget(formUser) }}
+                    <input type="submit" value="Buscar"  />
+                </form><br>
+                <br>
+        {% endif %}
+    </div>
+    {#
+    <div id="new_user" style="display:none;" class="content_section">
+        <h3><span>Agregar Usuario</span> </h3>
+            <form action="{{ path('AcmeUserBundle_usuarios')}}" method="post" id="form_new_user" 
+                class="formBusquedaRapida">
+                <b>Agregar Usuario</b><br>
+                {{  form_widget(formNewPerson._token) }}
+                <label>Nombre:</label>{{ form_widget(formNewPerson.nombre) }}<br>
+                <label>Apellido Paterno:</label>{{ form_widget(formNewPerson.apellido_paterno) }}<br>
+                <label>Apellido Materno:</label>{{ form_widget(formNewPerson.apellido_materno) }}<br>
+                <label>Fecha de nacimiento:</label>{{ form_widget(formNewPerson.fecha_nacimiento) }}
+                <label>Ocupación:</label>{{ form_widget(formNewPerson.ocupacion) }}<br>
+                <label>Escuela:</label>{{ form_widget(formNewPerson.escuela) }}<br>
+                <label>Periodo Escolar:</label>{{ form_widget(formNewPerson.periodo_escolar) }}<br>
+                <label>Email:</label>{{ form_widget(formNewPerson.email) }}<br>
+                <label>Estatus:</label>{{ form_widget(formNewPerson.status) }}<br>
+                <label>Clave:</label>{{ form_widget(formNewPerson.clave) }}<br>
+                <label>Foto:</label>{{ form_widget(formNewPerson.foto) }}<br>
+                <label>Comentario:</label>{{ form_widget(formNewPerson.comentario) }}<br>
+                <label>Address:</label>
+                <input type="button" onClick="displayPopUpNewAddress('formNewAddress')" value="Agregar Dirección"><br>
+                <label>Telefono:</label>
+                <input type="button" onClick="displayPopUpNewPhone('formNewPhone')" value="Agregar medios de contacto"><br>
+                <div id="usuario_direccion" style="display:none">
+                    <label>Direccion:</label>{{ form_widget(formNewPerson.address_id) }}
+                </div>
+                <div id="usuario_telefono" style="display:none">
+                    <label>Telefono:</label>{{ form_widget(formNewPerson.telefono) }}
+                </div>
+                <input type="submit" value="Guardar"/>
+            </form>
+
+        <div id="formNewPhone" style="display:none">
+            <form action="#" method="post" class="formBusquedaRapida">
+                <b>Agregar datos Telefónicos</b>
+                {{ form_widget(formNewPhone) }}
+            </form>
+        </div>
+        <div id="formNewAddress" style="display:none">
+            <form action="#" method="post" class="formBusquedaRapida">
+                <b>Agregar Dirección</b><br>
+                <select name="country" id="select-country" disabled>
+                    <b>País</b>
+                   {% for country in countries %}
+     
+                        {% if country.id == 159 %} 
+                            <option selected="selected" value="{{country.id}}">{{ country.country }}</option>
+                        {% else %}
+                            <option value="{{country.id}}">{{ country.country }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <select name="state" id="select-state">
+                    <b>Estado</b>
+                    {% for state in states %}
+                        {% if state.id == 14 %} 
+                            <option selected="selected" value="{{state.id}}">{{ state.state }}</option>
+                        {% else %}
+                            <option value="{{state.id}}">{{ state.state }}</option>
+                         {% endif %}
+                    {% endfor %}
+                </select>
+                <div id="municipalities"><b>Municipio</b></div>
+                </form>
+                <div id="address">
+                    <b>Domicilio</b>
+                    <form action="{{ path('AcmeUserBundle_usuarios')}}" method="post" class="formBusquedaRapida">
+                        {{ form_widget(formNewAddress) }}
+                        <input type="submit">
+                    </form>
+                </div>
+        </div>
+    </div>
+    #}
+{% endblock %}
+{% block asidedown %}
+    <div class="divAsideDown" id="divAsideDown">
+        <div class="divAsideAgregarElemento">
+            Agregar Usuario:
+            <button id="btnNuevoUser" name="btnNuevoUser" 
+                {#onClick='switchDisplayNew("new_user")'#} onClick="location.href='{{ path('AcmeUserBundle_new_user')}}';"> Nuevo
+            </button>
+        </div>
+        {% if is_granted("ROLE_ADMIN")%}
+            <div class="divAsideAgregarElemento">
+                Agregar Admin:
+                <button id="btnNuevoAdmin" name="btnNuevoAdmin" 
+                    onClick="location.href='{{path('fos_user_registration_register')}}';">Nuevo
+                </button>
+            </div>
+        {% endif %}
+    </div>
+    <div class="divAsideDown" style="display:none;">
+    <div class="divAsideAgregarElemento">
+        Cancelar:
+        <button id="btnCancelar" name="btnCancelar" 
+            onClick='switchDisplayNew("search_usuarios")'>Cancelar
+        </button>
+    </div>
+{% endblock %}
+{% block morescripts %}
+<script>
+function displayPopUpNewPhone(id) {
+    var htmlAutorList;
+    var htmlAutorSelect;
+    $("#"+id).dialog( "open" );
+    $("#"+id).dialog({
+        height: 320,
+        width: 430,
+        modal: true,
+        resizable: false,
+        buttons: {
+             "Crear": function() {
+               $.ajax({
+                  type: "POST",
+                        //el UsuariosController procesará los datos
+                  url: "{{ path('AcmeUserBundle_usuarios')}}",
+                        //pasa los datos que se encuentran en el formulario de telefonos para ser guardados
+                  data: $("#"+id).find('form').serialize(),
+                  success: function(data){
+                    if(data == 'false'){
+                        console.log('Error al ingresar los datos');
+                    }else{
+                        $("#"+id).dialog( "close" );
+                        ////////// sustituye los valores de checkbox por sólo el que se acaba de guardar y los selecciona
+                        htmlAutorSelect = '<input type="radio" id="acme_userbundle_persontype_telefono_'+data+'" checked required ' +
+                            'name="acme_userbundle_persontype[telefono]" value="'+data+'">';
+                        $("#acme_userbundle_persontype_telefono").html(htmlAutorSelect);
+                    }
+                   }
+                });
+               
+             },
+             Cancel: function() {
+                $( this ).dialog( "close" );
+            }
+        },
+    });
+}
+
+function displayPopUpNewAddress(id) {
+    var htmlAutorList;
+    var htmlAutorSelect;
+    console.log( $("#address").find('form').serialize());
+    $("#"+id).dialog( "open" );
+    $("#"+id).dialog({
+        height: 350,
+        width: 440,
+        modal: true,
+        resizable: false,
+        buttons: {
+             "Crear": function() {
+               $.ajax({
+                  type: "POST",
+                  url: "{{ path('AcmeUserBundle_usuarios')}}",
+                  //manda el formulario de direccion
+                  data: $("#address").find('form').serialize(),
+                  success: function(data){
+                        console.log(data);
+                        $("#"+id).dialog( "close" );
+                        ////////// sustituye los valores de checkbox por sólo el que se acaba de guardar y los selecciona
+                        htmlAutorSelect = '<input type="radio" id="acme_userbundle_persontype_address_id_'+data+'"' +
+                            'name="acme_userbundle_persontype[address_id]" value="'+data+'" checked >';
+                        $("#usuario_direccion").html(htmlAutorSelect);
+                        
+                    },
+                    error: function  () {
+                        console.log('error ala procesar los datos');
+                    }
+                });
+             },
+             Cancel: function() {
+                $( this ).dialog( "close" );
+            }
+        },
+    });
+}
+
+$("#select-state").change(function () {
+    var value = this.value
+        , options = "";
+    //console.log($("#formNewPhone").find('form').serialize());
+    $.ajax({
+      type: "POST",  url: "{{ path('AcmeUserBundle_usuarios')}}",
+      data: {formulario:"states",valor:value},
+      success: function(data){
+         obj = eval(data);
+        for (var i = obj.length - 1; i >= 0; i--) {
+            if (obj[i].id==598) {
+                 options += '<option selected="selected" value='+obj[i].id+'>'+obj[i].municipality+'</option>';
+             }else{
+                options += '<option value='+obj[i].id+'>'+obj[i].municipality+'</option>';
+             }
+        };
+         $('#municipalities').html('<select id="select-municipalities">'+options+'</select>');
+         //$('#municipalities').html($("#formNewPhone").find('form').serialize());
+         $("#municipalities select").change(function () {
+            var value = this.value;
+            $('#acme_userbundle_addresstype_municipality_id').html(
+               '<input type="radio" id="acme_userbundle_addresstype_municipality_id_'+value+'" checked ' + 
+               'name="acme_userbundle_addresstype[municipality_id]" required="required" value="'+value+'">'
+            );
+        }).change();
+
+      },
+      error: function () {
+          console.log('error');
+      }
+    });
+
+}).change();
+
+
+</script>
+{% endblock %}

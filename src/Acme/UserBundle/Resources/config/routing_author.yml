@@ -1,0 +1,27 @@
+author:
+    pattern: /
+    defaults: {_controller: AcmeUserBundle:Author:index }
+
+author_update:
+    pattern: /{id}/update
+    defaults: {_controller: AcmeUserBundle:Author:update }
+
+author_show:
+    pattern: /{id}/show
+    defaults: {_controller: AcmeUserBundle:Author:show }
+
+author_edit:
+    pattern: /{id}/edit
+    defaults: {_controller: AcmeUserBundle:Author:edit }
+
+author_new:
+    pattern: /new
+    defaults: {_controller: AcmeUserBundle:Author:new }
+
+author_create:
+    pattern: /create
+    defaults: {_controller: AcmeUserBundle:Author:create}
+
+author_delete:
+    pattern: /{id}/delete
+    defaults: {_controller: AcmeUserBundle:Author:delete }

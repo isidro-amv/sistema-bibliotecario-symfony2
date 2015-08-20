@@ -1,0 +1,27 @@
+record:
+    pattern: /
+    defaults: {_controller: AcmeUserBundle:Record:index }
+
+record_update:
+    pattern: /{id}/update
+    defaults: {_controller: AcmeUserBundle:Record:update }
+
+record_show:
+    pattern: /{id}/show
+    defaults: {_controller: AcmeUserBundle:Record:show }
+
+record_edit:
+    pattern: /{id}/edit
+    defaults: {_controller: AcmeUserBundle:Record:edit }
+
+record_new:
+    pattern: /new
+    defaults: {_controller: AcmeUserBundle:Record:new }
+
+record_create:
+    pattern: /create
+    defaults: {_controller: AcmeUserBundle:Record:create}
+
+record_delete:
+    pattern: /{id}/delete
+    defaults: {_controller: AcmeUserBundle:Record:delete }

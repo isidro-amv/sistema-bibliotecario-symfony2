@@ -1,0 +1,65 @@
+<h1>Material list</h1>
+
+<table {#class="records_list"#} id="example" class="display">
+    <thead>
+        <tr>
+            <th>Actions</th>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Autor</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Tipo</th>
+            <th>Clasificacion</th>
+            <th>Idioma</th>
+            <th>Nota</th>  
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('material_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('material_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                    <li>
+                       <form action="{{ path('material_delete')}}" method="post" class="confirm">
+                            <input type="hidden" name="id" value="{{entity.id}}">
+                            <button type="submit" >Delete</button>
+                        </form>
+                    </li>
+                </ul>
+            </td>
+            <td><a href="{{ path('material_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.nombre }}</td>
+            <td>{{ entity.autor }}</td>
+            <td>{{ entity.precio }}</td>
+            <td>{{ entity.cantidad }}</td>
+            <td>{{ entity.tipo }}</td>
+            <td>{{ entity.clasificacion }}</td>
+            <td>{{ entity.idioma }}</td>
+            <td>{{ entity.nota }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% block morescripts %}
+<script type="text/javascript" >
+    $('#example').dataTable({
+        "sPaginationType": "full_numbers",
+    });
+</script>
+{% endblock %}
+{#
+<ul>
+    <li>
+        <a href="{{ path('material_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+#}
